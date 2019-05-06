@@ -28,5 +28,19 @@ for index, value in enumerate(message):
         result += chr((ord(value) + partial_shift - 97) % 26 + 97)
     else:
         result += value
+#        result = result + value
 
 print(f"Kryptovana sprava: {result}")
+
+result_decrypt = ""
+for index, value in enumerate(result):
+    partial_shift = 26 - int(shift[index % len(shift)])
+    if value.isupper() and value.isalpha():
+        result_decrypt += chr((ord(value) + partial_shift - 65) % 26 + 65)
+    elif value.isalpha():
+        result_decrypt += chr((ord(value) + partial_shift - 97) % 26 + 97)
+    else:
+        result_decrypt += value
+
+print(f"Dekryptovana sprava: {result_decrypt}")
+

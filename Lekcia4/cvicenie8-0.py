@@ -6,9 +6,7 @@ while number:
     number_list.append(number)
     number = input("Zadaj dalsie cislo:")
 
-print(f"{len(number_list)}")
-print(f"{sum(number_list)}")
+print(f" Pocet: {len(number_list)} | {sum(number_list)}")
 print(f"{sum(number_list)/len(number_list)}")
 print(f"{min(number_list)}")
 print(f"{max(number_list)}")
-# TODO: DU UPRAVIT FORMATOVANIE PODLA ZADANIA
