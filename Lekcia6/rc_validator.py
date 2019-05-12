@@ -30,11 +30,16 @@ def rc_validator(rc: str) -> bool:
             date_to_check = rodne_cislo[:6]
         # skusime datum previest na datetime objekt (datum v pythone)
         try:
-            datetime.datetime.strptime(date_to_check, "%y%m%d")
+            if len(rodne_cislo) == 9:
+                data_cas = datetime.datetime.strptime("19"+date_to_check, "%Y%m%d")
+            else:
+                data_cas = datetime.datetime.strptime(date_to_check, "%y%m%d")
             # ak je rodne cislo 9 miestne (pred 54 rokom, rovno vraciame true)
             # ak je rodne cislo 10 miestne overime, ci je delitelne 11 a ci je po 1953 roku
+            # musime pracovat s predpokladom, ze ak mame 10 miestne a je < 54 je to 2054
             if (len(rodne_cislo) == 9 and int(date_to_check[:2]) < 54) or\
-                    (len(rodne_cislo) == 10 and int(rodne_cislo) % 11 == 0 and int(date_to_check[:2]) > 53):
+                    (len(rodne_cislo) == 10 and int(rodne_cislo) % 11 == 0):
+                print(data_cas)
                 return True
         except ValueError:
             return False
