@@ -29,11 +29,5 @@ print(decorated_fib(35))
 
 
 
-@time_it
-def suma(a, b):
-    time.sleep(1)
-    return a+b
-
-print(suma(1, 2))
-## VYTVORTE DEKORATOR, KTORY ODMERIA CAS
+# VYTVORTE DEKORATOR, KTORY ODMERIA CAS
 ## VYKONANIA FIB()

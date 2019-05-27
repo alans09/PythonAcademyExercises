@@ -29,13 +29,13 @@ for line in fp:
     try:
         help = re.match(re_, line)
         year = int(data[-2][-5:-1])
-        if int(data[-2][-5:-1]) > year_newest:
+        if year > year_newest:
             year_newest = year
             newest = line
             movie_name_newest = help.group(3)
             line_nr_newest = int(data[0])
             reviews_newest = data[-1]
-        if int(data[-2][-5:-1]) < year_oldest:
+        if year < year_oldest:
             year_oldest = year
             oldest = line
             movie_name_oldest = help.group(3)
