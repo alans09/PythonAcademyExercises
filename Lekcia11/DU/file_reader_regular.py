@@ -5,7 +5,7 @@ class MovieContext():
         self.fh = open(movies_file, "r")
 
     def __enter__(self):
-        next(self.fh) #  ignore header
+        next(self.fh)  # ignore header (zavolame next() na iterable object, cim dostaneme dalsi prvok)
         re_ = re.compile(r"^(\d+),\s(\d+)%,(.*)\s\((\d+)\),(\d+)$")
         result = []
         for line in self.fh:
