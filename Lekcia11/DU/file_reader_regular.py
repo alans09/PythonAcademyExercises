@@ -22,14 +22,15 @@ class MovieContext():
         return result
 
     def __exit__(self, *args):
-        fp = open("stats.csv", "w")
-        fp.write("typ,nazov,rok,reviews\n")
-        fp.write(f"Najstarsi,{movies[oldest[0]][2]},{movies[oldest[0]][3]},{movies[oldest[0]][4]}\n")
-        fp.write(f"Najnovsi,{movies[newest[0]][2]},{movies[newest[0]][3]},{movies[newest[0]][4]}\n")
-        fp.write(
-            f"Najrecenzovanejsi,{movies[most_reviews[0]][2]},{movies[most_reviews[0]][3]},{movies[most_reviews[0]][4]}"
-        )
-        fp.close()
+        with open("stats.csv", "w") as fp:
+            fp.write("typ,nazov,rok,reviews\n")
+            fp.write(f"Najstarsi,{movies[oldest[0]][2]},{movies[oldest[0]][3]},{movies[oldest[0]][4]}\n")
+            fp.write(f"Najnovsi,{movies[newest[0]][2]},{movies[newest[0]][3]},{movies[newest[0]][4]}\n")
+            fp.write(
+                f"Najrecenzovanejsi,{movies[most_reviews[0]][2]},{movies[most_reviews[0]][3]},{movies[most_reviews[0]][4]}"
+            )
+            fp.close()
+        self.fh.close()
 
 
 # format   <premenna> = [<id>, <rok>]
@@ -54,12 +55,3 @@ with MovieContext("movies.csv") as movies:
     print(f"Najstarsi film: {' '.join(movies[oldest[0]][2:-1])}")
     print(f"Najnovsi film: {' '.join(movies[newest[0]][2:-1])}")
     print(f"Najviac recenzovany film: {' '.join(movies[most_reviews[0]][2:-1])}")
-
-# fp = open("stats.csv", "w")
-# fp.write("typ,nazov,rok,reviews\n")
-# fp.write(f"Najstarsi,{movies[oldest[0]][2]},{movies[oldest[0]][3]},{movies[oldest[0]][4]}\n")
-# fp.write(f"Najnovsi,{movies[newest[0]][2]},{movies[newest[0]][3]},{movies[newest[0]][4]}\n")
-# fp.write(f"Najrecenzovanejsi,{movies[most_reviews[0]][2]},{movies[most_reviews[0]][3]},{movies[most_reviews[0]][4]}")
-# fp.close()
-#
-
